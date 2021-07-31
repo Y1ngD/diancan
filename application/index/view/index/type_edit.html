@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="padding:2%">
+		<ul class="nav nav-tabs">
+			<li><a href="{:url('index/type')}">分类管理</a></li>
+			<li><a href="{:url('index/typeAdd')}">添加分类</a></li>
+			<li class="active"><a href="javascript:;">分类修改</a></li>
+		</ul>
+		<p>
+			<a href="" class="btn btn-primary pull-right"> 刷新</a>
+		</p>
+		<form role="form" style="margin-top: 2%" action="{:url('index/typeEditup')}" method="post">
+			<div class="form-group" >
+				<label for="name">分类名称</label>
+				<input type="text" class="form-control" name="type" placeholder="请输入分类名称" value="{$data.type}">
+			</div>
+			<input type="hidden" name="id" value="{$data.id}">
+			<button type="submit" class="btn btn-primary">提交</button>
+		</form>
+	</div>
+</body>
+</html>

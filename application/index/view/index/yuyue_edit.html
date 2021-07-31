@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="padding:2%">
+		<ul class="nav nav-tabs">
+			<li><a href="{:url('index/yuyue')}">预约管理</a></li>
+		</ul>
+		<p>
+			<a href="" class="btn btn-primary pull-right"> 刷新</a>
+		</p>
+		<form role="form" style="margin-top: 2%" action="{:url('index/yuyueEditup')}" method="post">
+			<input type="hidden" name="id" value="{$data.id}">
+			<div class="form-group">
+			    <label for="name">餐桌</label>
+			    <select class="form-control" name="canzhuo_id">
+			    	{volist name="$canzhuo" id="vo"}
+						<option value="{$vo.id}" {$vo.id==$data.canzhuo_id?'selected':''}>{$vo.name}</option>
+					{/volist}
+			    </select>
+		  	</div>
+		  	<div class="form-group">
+			    <label for="name">标签</label>
+			    <input type="datetime-local" class="form-control" value="{$data.date|date="Y-m-d\\TH:i",###}" name="date">
+		  	</div>
+			<input type="hidden" name="id" value="{$data.id}">
+			<button type="submit" class="btn btn-primary">提交</button>
+		</form>
+	</div>
+</body>
+</html>

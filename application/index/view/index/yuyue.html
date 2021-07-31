@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="padding:2%">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">预约管理</a></li>
+		</ul>
+		<p>
+			<a href="" class="btn btn-primary pull-right"> 刷新</a>
+		</p>
+		<form class="form-inline" role="form" style="padding: 2% 0">
+		  <div class="form-group">
+		    <label class="sr-only" for="name">名称</label>
+		    <input type="text" class="form-control" name="yyname" placeholder="请输入用户名称" value="{$yyname}">
+		  </div>
+		  <div class="form-group">
+		    <label class="sr-only" for="name">订单号</label>
+		    <input type="text" class="form-control" name="code" placeholder="请输入订单号" value="{$code}">
+		  </div>
+		  <button type="submit" class="btn btn-default">提交</button>
+		  <a href="{:url('index/yuyue')}">
+		  	<button type="button" class="btn btn-default">清空</button>
+	  	  </a>	
+		</form>
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th>ID</th>
+		      <th>订单号</th>
+		      <th>餐桌名称</th>
+		      <th>餐桌人数</th>
+		      <th>预约人姓名</th>
+		      <th>预约人电话</th>
+		      <th>预约时间</th>
+		      <th width="100px">状态</th>
+		      <th width="150px">订单处理</th>
+		      <th width="100px">操作</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{volist name="list" id="vo"}
+			    <tr>
+			      <td>{$vo.id}</td>
+	      		  <td>{$vo.code}</td>
+			      <td>{$vo.name}</td>
+			      <td>{$vo.num}</td>
+			      <td>{$vo.yyname}</td>
+			      <td>{$vo.tel}</td>
+			      <td><?php echo date("Y-m-d H:i:s",$vo['date']) ?></td>	
+			      <td>
+			      	{if condition = '$vo.status eq 0'}
+			      		<span class="text-warning">未处理</span>
+		      		{/if}
+	      			{if condition = '$vo.status eq 1'}
+		      			<span class="text-success">已通过</span>
+	      			{/if}
+      				{if condition = '$vo.status eq 2'}
+		      			<span class="text-danger">未通过</span>
+	      			{/if}
+      				{if condition = '$vo.status eq 3'}
+		      			<span class="text-primary">完成</span>
+	      			{/if}
+	      		  </td>
+	      		  <td>
+	      		  	<a href="{:url('index/ddcl',['id'=>$vo.id,'status'=>1])}" class="btn-success btn btn-xs">通过</a>
+	      		  	<a href="{:url('index/ddcl',['id'=>$vo.id,'status'=>2])}" class="btn-danger btn btn-xs">不通过</a>
+	      		  	<a href="{:url('index/ddcl',['id'=>$vo.id,'status'=>3])}" class="btn-primary btn btn-xs">完成</a>
+
+	      		  </td>
+			      <td>
+			      	<a href="{:url('index/yuyueEdit',['id'=>$vo.id])}" class="btn btn-warning btn-xs">编辑</a>
+		      		<a href="{:url('index/yuyueDel',['id'=>$vo.id])}" class="btn btn-danger btn-xs">删除</a>
+			      </td>
+			    </tr>
+		    {/volist}
+		  </tbody>
+		</table>
+		{$page}
+	</div>
+</body>
+</html>

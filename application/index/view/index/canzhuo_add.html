@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="padding:2%">
+		<ul class="nav nav-tabs">
+			<li><a href="{:url('index/canzhuo')}">餐桌管理</a></li>
+			<li class="active"><a href="{:url('index/canzhuoAdd')}">添加餐桌</a></li>
+		</ul>
+		<p>
+			<a href="" class="btn btn-primary pull-right"> 刷新</a>
+		</p>
+		<form role="form" style="margin-top: 2%" action="{:url('index/canzhuoAddup')}" method="post">
+			<div class="form-group" >
+				<label for="name">餐桌名称</label>
+				<input type="text" class="form-control" name="name" placeholder="请输入分类名称">
+			</div>
+			<div class="form-group" >
+				<label for="name">餐桌人数</label>
+				<input type="num" class="form-control" name="num" placeholder="请输入分类名称">
+			</div>
+			<button type="submit" class="btn btn-primary">提交</button>
+		</form>
+	</div>
+</body>
+</html>

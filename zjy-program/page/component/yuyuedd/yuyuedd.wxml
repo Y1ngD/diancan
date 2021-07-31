@@ -1,0 +1,10 @@
+<view class="main" style="padding-top:10%">
+    <view class="n1">预约信息</view>
+    <view class="form-box">
+        <form bindsubmit="formSubmit">
+            <input value="" name="yyname" placeholder="姓名"/>
+            <input type="text" name="tel" value="" placeholder="电话"/>
+            <button form-type="submit">预约</button>
+        </form>
+    </view>
+</view>

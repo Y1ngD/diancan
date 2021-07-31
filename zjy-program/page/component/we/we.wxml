@@ -1,0 +1,7 @@
+<!--page/component/we/we.wxml-->
+<view class="info-box">
+<text>
+  联系电话：15677889920
+       QQ：414552055
+</text>
+</view>

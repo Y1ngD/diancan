@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="padding:2%">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">餐桌管理</a></li>
+			<li><a href="{:url('index/canzhuoAdd')}">添加餐桌</a></li>
+		</ul>
+		<p>
+			<a href="" class="btn btn-primary pull-right"> 刷新</a>
+		</p>
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th>ID</th>
+		      <th>餐桌名称</th>
+		      <th>餐桌人数</th>
+		      <th width="100px">状态</th>
+		      <th width="100px">操作</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{volist name="list" id="vo"}
+			    <tr>
+			      <td>{$vo.id}</td>
+			      <td>{$vo.name}</td>
+			      <td>{$vo.num}</td>
+			      <td>
+			      	{if condition = '$vo.status eq 0'}
+			      		<span class="text-success">未使用</span>
+		      		{else/}
+		      			<span class="text-danger">已使用</span>
+	      			{/if}
+	      		  </td>
+			      <td>
+			      	<a href="{:url('index/canzhuoEdit',['id'=>$vo.id])}" class="btn btn-warning btn-xs">编辑</a>
+		      		<a href="{:url('index/canzhuoDel',['id'=>$vo.id])}" class="btn btn-danger btn-xs">删除</a>
+			      </td>
+			    </tr>
+		    {/volist}
+		  </tbody>
+		</table>
+		{$page}
+	</div>
+</body>
+</html>

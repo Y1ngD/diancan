@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="__BS__/css/bootstrap.min.css">
+    <script src="__BS__/js/jquery.min.js"></script>
+    <script src="__BS__/js/bootstrap.min.js"></script>
+    <script src="__BS__/js/echarts.min.js"></script>
+</head>
+
+<body>
+    <div style="padding:2%">
+        <div>
+            <a href="" class="btn btn-primary pull-right">刷新</a>
+        </div>
+        <div style="width: 500px;margin: 0 auto;padding: 5% 0;">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <div>
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="button" class="btn btn-default" id="cx">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="container" style="width: 1200px;height:500px; margin: 0 auto"></div>
+        <div id="container2" style="width: 1200px;height:500px; margin: 3% auto"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    tj();
+    tj2();
+    $("#cx").click(function() {
+        tj();
+        tj2();
+    })
+
+    function tj() {
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        var date = $('#date').val();
+        option = null;
+        $.ajax({
+            url: "{:url('index/tj')}",
+            data: {
+                date: date
+            },
+            type: "post",
+            dataType: 'json',
+            success: function(res) {
+                legend = res.legend;
+                series = res.series;
+                title = res.title + '销量统计';
+
+                $('#date').val(res.date);
+                console.log(legend);
+                console.log(series);
+                option = {
+                    title: {
+                        text: title,
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: legend
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['00:00-01:59', '02:00-03:59', '04:00-05:59', '06:00-07:59', '8:00-9:59', '10:00-11:59', '12:00-13:59', '14:00-15:59', '16:00-17:59', '18:00-19:59', '20:00-21:59', '22:00-23:59']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: series
+                };
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            }
+
+        })
+    }
+
+    function tj2() {
+        var dom = document.getElementById("container2");
+        var myChart = echarts.init(dom);
+        var app = {};
+        var date = $('#date').val();
+        option = null;
+        $.ajax({
+            url: "{:url('index/tj2')}",
+            data: {
+                date: date
+            },
+            type: "post",
+            dataType: 'json',
+            success: function(res) {
+                legend = res.legend;
+                series = res.series;
+                title = res.title + '营业额统计';
+                $('#date').val(res.date);
+                console.log(legend);
+                console.log(series);
+                option = {
+                    title: {
+                        text: title,
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: legend
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['00:00-01:59', '02:00-03:59', '04:00-05:59', '06:00-07:59', '8:00-9:59', '10:00-11:59', '12:00-13:59', '14:00-15:59', '16:00-17:59', '18:00-19:59', '20:00-21:59', '22:00-23:59']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: series
+                };
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            }
+
+        })
+    }
+</script>
+
+</html>

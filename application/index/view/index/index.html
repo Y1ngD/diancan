@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>管理后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="__HEAD__/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__HEAD__/css/menuBox.css">
+</head>
+
+<body>
+
+    <nav class="mynav colorWhite" id="mynav">
+        <div class="cloud1" id="cloud1">
+            <div class="box1">
+                <!-- <img src="__HEAD__/images/LC1.png" alt="cloud1" class="cloud"> --> &nbsp;&nbsp;&nbsp;&nbsp;点餐管理后台
+            </div>
+            <a href="#" id="mynav-taggle"><span class="glyphicon glyphicon-align-justify" ></span></a>
+        </div>
+        <div class="right-bar">
+            <div id="color-bar">
+                <a href="#"> <span class="glyphicon glyphicon-cog"></span></a>
+                <div class="tools noneBlock" id="tools">
+                    <div class="triangle"></div>
+                    <div class="colorbox">
+                        <p>主题颜色</p>
+                        <span class="glyphicon glyphicon-cloud bar-blue" id="colorBlue"></span>
+                        <span class="glyphicon glyphicon-cloud bar-green" id="colorGreen"></span>
+                        <span class="glyphicon glyphicon-cloud bar-grey" id="colorGrey"></span>
+                        <span class="glyphicon glyphicon-cloud bar-white" id="colorWhite"></span>
+                    </div>
+                </div>
+            </div>
+            <a href="{:url('login/logout')}"><span class="glyphicon glyphicon-log-in"></span></a>
+        </div>
+    </nav>
+    <div class="main-menu">
+        <div id="themenu" class="big-menu">
+            <div class="leftbox">
+                <div id="left-menu" class="list-group show-nav colorWhite">
+                    <ul>
+                        <li><a href="{:url('index/home')}" target="iframe_right" class="list-group-item menu-li"><i class="glyphicon glyphicon-home" style="margin-right:50px;"></i>首页</a></li>
+                        <li><a href="{:url('index/gly')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-user" style="margin-right:50px;"></i>管理员管理</a></li>
+                        <li><a href="{:url('index/user')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-user" style="margin-right:50px;"></i>用户管理</a></li>
+                        <li><a href="{:url('index/type')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i>分类管理</a></li>
+                        <li><a href="{:url('index/cpList')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i>餐品管理</a></li>
+                        <li><a href="{:url('index/dd')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i>订单管理</a></li>
+                        <li><a href="{:url('index/canzhuo')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i>餐桌管理</a></li>
+                        <li><a href="{:url('index/yuyue')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i>预约管理</a></li>
+                        <li><a href="{:url('index/tongji')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i>统计图表</a></li>
+                    </ul>
+                </div>
+                <div id="right-menu" class="list-group hide-nav2 colorWhite">
+                    <ul>
+                        <li><a href="{:url('index/home')}" target="iframe_right" class="list-group-item menu-li"><i class="glyphicon glyphicon-home" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/gly')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/user')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/type')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/cpList')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-file" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/dd')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-comment" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/canzhuo')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-comment" style="margin-right:50px;"></i></a></li>
+                        <li><a href="{:url('index/yuyue')}" target="iframe_right" class="list-group-item"><i class="glyphicon glyphicon-comment" style="margin-right:50px;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-box small-box " id="right-box"><iframe src="{:url('index/home')}" name="iframe_right" class="iframe-box"></iframe></div>
+    </div>
+
+    <script src="__HEAD__/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        /*左侧菜单滑入*/
+        $("#color-bar").click(function() {
+            var tools = $("#tools")
+            if (tools.hasClass("showBlock")) {
+                tools.addClass("noneBlock").removeClass("showBlock");
+            } else if (tools.hasClass("noneBlock")) {
+                tools.addClass("showBlock").removeClass("noneBlock");
+            }
+        })
+        $("#mynav-taggle").click(function() {
+                var MenuLeft = $("#left-menu");
+                var MenuRight = $("#right-menu");
+                var MenuCloud = $("#cloud1");
+                var rightBox = $("#right-box");
+                var TheMenu = $("#themenu");
+                if (MenuLeft.hasClass("show-nav")) {
+                    setTimeout(function() {
+                        MenuLeft.addClass("hide-nav").removeClass("show-nav");
+                        MenuCloud.addClass("hide-nav3").removeClass("show-nav");
+                        MenuRight.addClass("show-nav").removeClass("hide-nav2");
+                        rightBox.addClass("big-box").removeClass("small-box");
+                        TheMenu.addClass("small-menu").removeClass("big-menu");
+                    }, 100)
+                } else {
+                    setTimeout(function() {
+                        MenuLeft.addClass("show-nav").removeClass("hide-nav");
+                        MenuCloud.addClass("show-nav").removeClass("hide-nav3");
+                        MenuRight.addClass("hide-nav2").removeClass("show-nav");
+                        rightBox.addClass("small-box").removeClass("big-box");
+                        TheMenu.addClass("big-menu").removeClass("small-menu");
+                    }, 100)
+                }
+            })
+            /*主题*/
+            /*蓝色*/
+        $('#colorBlue').click(function() {
+                var mynav = $('#mynav'); /*nav-bar*/
+                var rightMenu = $('#right-menu'); /*小菜单*/
+                var leftMenu = $('#left-menu'); /*大菜单*/
+                if (mynav.hasClass('colorWhite')) {
+                    mynav.addClass("colorBlue").removeClass("colorWhite");
+                    rightMenu.addClass("colorBlue").removeClass("colorWhite");
+                    leftMenu.addClass("colorBlue").removeClass("colorWhite");
+                } else if (mynav.hasClass('colorGreen')) {
+                    mynav.addClass("colorBlue").removeClass("colorGreen");
+                    rightMenu.addClass("colorBlue").removeClass("colorGreen");
+                    leftMenu.addClass("colorBlue").removeClass("colorGreen");
+                } else if (mynav.hasClass('colorGrey')) {
+                    mynav.addClass("colorBlue").removeClass("colorGrey");
+                    rightMenu.addClass("colorBlue").removeClass("colorGrey");
+                    leftMenu.addClass("colorBlue").removeClass("colorGrey");
+                }
+            })
+            /*绿色*/
+        $('#colorGreen').click(function() {
+                var mynav = $('#mynav');
+                var rightMenu = $('#right-menu');
+                var leftMenu = $('#left-menu');
+                if (mynav.hasClass('colorWhite')) {
+                    mynav.addClass("colorGreen").removeClass("colorWhite");
+                    rightMenu.addClass("colorGreen").removeClass("colorWhite");
+                    leftMenu.addClass("colorGreen").removeClass("colorWhite");
+                } else if (mynav.hasClass('colorBlue')) {
+                    mynav.addClass("colorGreen").removeClass("colorBlue");
+                    rightMenu.addClass("colorGreen").removeClass("colorBlue");
+                    leftMenu.addClass("colorGreen").removeClass("colorBlue");
+                } else if (mynav.hasClass('colorGrey')) {
+                    mynav.addClass("colorGreen").removeClass("colorGrey");
+                    rightMenu.addClass("colorGreen").removeClass("colorGrey");
+                    leftMenu.addClass("colorGreen").removeClass("colorGrey");
+                }
+            })
+            /*灰色*/
+        $('#colorGrey').click(function() {
+                var mynav = $('#mynav');
+                var rightMenu = $('#right-menu');
+                var leftMenu = $('#left-menu');
+                if (mynav.hasClass('colorWhite')) {
+                    mynav.addClass("colorGrey").removeClass("colorWhite");
+                    rightMenu.addClass("colorGrey").removeClass("colorWhite");
+                    leftMenu.addClass("colorGrey").removeClass("colorWhite");
+                } else if (mynav.hasClass('colorBlue')) {
+                    mynav.addClass("colorGrey").removeClass("colorBlue");
+                    rightMenu.addClass("colorGrey").removeClass("colorBlue");
+                    leftMenu.addClass("colorGrey").removeClass("colorBlue");
+                } else if (mynav.hasClass('colorGreen')) {
+                    mynav.addClass("colorGrey").removeClass("colorGreen");
+                    rightMenu.addClass("colorGrey").removeClass("colorGreen");
+                    leftMenu.addClass("colorGrey").removeClass("colorGreen");
+                }
+            })
+            /*白色*/
+        $('#colorWhite').click(function() {
+            var mynav = $('#mynav');
+            var rightMenu = $('#right-menu');
+            var leftMenu = $('#left-menu');
+            if (mynav.hasClass('colorGrey')) {
+                mynav.addClass("colorWhite").removeClass("colorGrey");
+                rightMenu.addClass("colorWhite").removeClass("colorGrey");
+                leftMenu.addClass("colorWhite").removeClass("colorGrey");
+
+            } else if (mynav.hasClass('colorBlue')) {
+                mynav.addClass("colorWhite").removeClass("colorBlue");
+                rightMenu.addClass("colorWhite").removeClass("colorBlue");
+                leftMenu.addClass("colorWhite").removeClass("colorBlue");
+            } else if (mynav.hasClass('colorGreen')) {
+                mynav.addClass("colorWhite").removeClass("colorGreen");
+                rightMenu.addClass("colorWhite").removeClass("colorGreen");
+                leftMenu.addClass("colorWhite").removeClass("colorGreen");
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+
+<view class="main">
+    <view class="newest">
+        <view class="newest-title"><text>所有餐桌</text></view>
+        <view class="newest-box">
+            <block wx:for-items="{{list}}" wx:key='k' wx:for-item="vo">  
+                <view class="newest-list">
+                    <navigator url="../yuyuedd/yuyuedd?id={{vo.id}}">
+                        <image src="../../../image/s5.png"></image>
+                        <view class="newest-text"><text>{{vo.name}}</text></view>
+                        <view class="newest-text" style="font-size:20rpx"><text>餐桌人数：{{vo.num}}人</text></view>
+                        <view class="newest-text" style="font-size:20rpx"><text>{{vo.status}}</text></view>
+                    </navigator>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

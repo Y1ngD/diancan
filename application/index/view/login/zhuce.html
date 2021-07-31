@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>用户登录</title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+	body{
+        background:url(__IMG__/timg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+	}
+</style>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3 col-sm-offset-4" style="margin-top: 10%;background-color:#fff;padding:20px 60px;">
+			<h2 class="text-center">用户注册</h2>
+			<p class="pull-right"><a href="{:url('login/index')}"> 去登录  ></a></p>
+			<div class="clearfix"></div>
+			<form class="form-horizontal" role="form" action="{:url('login/zhuceUp')}" method="post">
+				<div class="form-group">
+					<label for="firstname" class="control-label">账号</label>
+				</div>
+				<div class="form-group">
+					
+					<div class="">
+						<input type="text" class="form-control" id="firstname" 
+							   placeholder="请输入账号" name="username">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="control-label">密码</label>
+				</div>
+				<div class="form-group">
+					
+					<div class="">
+						<input type="password" class="form-control" id="lastname" 
+							   placeholder="请输入密码" name="password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="control-label">确认密码</label>
+				</div>
+				<div class="form-group">
+					
+					<div class="">
+						<input type="text" class="form-control" id="lastname" 
+							   placeholder="请再次输入密码" name="repassword">
+					</div>
+				</div>	
+				<div class="form-group">
+					<div class="">
+						<button type="submit" class="btn btn-primary" style="width:100%;">注册</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

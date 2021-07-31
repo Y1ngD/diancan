@@ -1,0 +1,18 @@
+<view class="container">
+ 
+ <view class="info-box">
+   <view style="text-align: center;margin-bottom:10%;">
+     <image class="avatar-img" src="{{avatarUrl}}" />
+   </view>
+ 
+   <text>昵称： {{nickName}}</text>
+   <text>性别： {{gender}}</text>
+   <text>国家： {{country}}</text>
+   <text>省份： {{province}}</text>
+ </view>
+
+ <view style="margin-top:20%"> 
+   <button open-type="getUserInfo" bindtap="showUserInfoTap">获取个人信息</button>
+ </view>
+
+</view>

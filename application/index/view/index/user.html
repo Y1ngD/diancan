@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="__BS__/css/bootstrap.min.css">
+    <script src="__BS__/js/jquery.min.js"></script>
+    <script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div style="padding:2%">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">用户管理</a></li>
+            <li><a href="{:url('index/userAdd')}">添加用户</a></li>
+        </ul>
+        <p>
+            <a href="" class="btn btn-primary pull-right"> 刷新</a>
+        </p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户账号</th>
+                    <th width="100px">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="list" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.username}</td>
+                    <td>
+                        {if condition="$key eq 0"}
+                        <a href="#" class="btn btn-xs btn-warning" style="background-color: #ccc;">编辑</a>
+                        <a href="#" class="btn btn-xs btn-danger" style="background-color: #ccc;">删除</a> {else/}
+                        <a href="{:url('index/userEdit',['id'=>$vo.id])}" class="btn btn-xs btn-warning">编辑</a>
+                        <a href="{:url('index/userDel',['id'=>$vo.id])}" class="btn btn-xs btn-danger">删除</a> {/if}
+
+                    </td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+        {$page}
+    </div>
+</body>
+
+</html>

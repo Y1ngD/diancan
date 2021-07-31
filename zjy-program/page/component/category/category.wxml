@@ -1,0 +1,23 @@
+<view class="main">
+    <view class="categroy-left">
+        <view wx:for="{{category}}" wx:key="index" data-id="{{item.id}}" data-index="{{index}}"
+            bindtap="switchTab"
+            class="cate-list {{curIndex === index?'on':''}}">{{item.type}}</view>
+    </view>
+
+    <view class="categroy-right" >
+         <block wx:for="{{detail}}" wx:for-index wx:key="idx">
+            <view id="{{item.id}}" class="cate-box" bindtap="tz" data-id="{{item.id}}">
+                <view class="cate-banner">
+                    <image src="http://localhost/diancan/public/static/{{item.img}}" widthFix ></image>
+                </view>
+                <view class="cate-title">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="product">
+                    <text>￥ {{item.price}} 元</text>
+                </view>
+            </view>
+        </block> 
+    </view>
+</view>

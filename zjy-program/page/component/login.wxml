@@ -1,0 +1,14 @@
+<!--page/component/login.wxml-->
+<view class="main" style="padding-top:20%">
+    <view class="n1">用户登录</view>
+    <navigator url="../component/zhuce/zhuce">
+      <view class="n2">还没有账号？去注册</view>
+    </navigator>
+    <view class="form-box">
+        <form bindsubmit="formSubmit">
+            <input value="" name="username" placeholder="账号"/>
+            <input type="password" name="password" value="" placeholder="密码"/>
+            <button form-type="submit">登录</button>
+        </form>
+    </view>
+</view>

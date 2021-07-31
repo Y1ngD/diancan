@@ -1,0 +1,6 @@
+/* page/component/we/we.wxss */
+.info-box{
+  /* width: 80%; */
+  text-align: center;
+  
+}

@@ -1,0 +1,48 @@
+
+<view class="main">
+    <view class="search">
+        <navigator url="search/search">
+            <view class="search-text">
+                <icon class="weui-icon-search_in-box search-icon" type="search" size="14"></icon>
+                搜 索
+            </view>
+        </navigator>
+    </view>
+
+    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" width="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <view class="selected">
+        <view class="select-title"><text>精选主题</text></view>
+        <view class="select-top">
+            <view class="select-top-small" bindtap="tz">
+                <image src="/image/s1.png"></image>
+            </view>
+            <view class="select-top-small"  bindtap="tz">
+                <image src="/image/s2.png"></image>
+            </view>
+        </view>
+        <view class="select-bottom"  bindtap="tz">
+            <image src="/image/s3.png"></image>
+        </view>
+    </view>
+    <view class="newest">
+        <view class="newest-title"><text>最近新品</text></view>
+        <view class="newest-box">
+            <block wx:for-items="{{list}}" wx:key='k' wx:for-item="vo">  
+                <view class="newest-list">
+                    <navigator url="details/details?id={{vo.id}}">
+                        <image src="http://localhost/diancan/public/static/{{vo.img}}"></image>
+                        <view class="newest-text"><text>{{vo.name}}</text></view>
+                        <view class="newest-text"><text>￥ {{vo.price}}</text></view>
+                    </navigator>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

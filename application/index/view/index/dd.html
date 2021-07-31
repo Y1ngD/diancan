@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="__BS__/css/bootstrap.min.css">
+    <script src="__BS__/js/jquery.min.js"></script>
+    <script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div style="padding:2%">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">订单管理</a></li>
+            <!-- <li><a href="{:url('index/cpAdd')}">添加餐品</a></li> -->
+        </ul>
+        <p>
+            <a href="" class="btn btn-primary pull-right"> 刷新</a>
+        </p>
+        <!-- <form class="form-inline" role="form" style="padding: 2% 0">
+            <div class="form-group">
+                <label class="sr-only" for="name">名称</label>
+                <input type="text" class="form-control" name="time" placeholder="请输入时间" value="{$time}">
+            </div>
+            <button type="submit" class="btn btn-default">提交</button>
+            <a href="{:url('index/dd')}">
+                <button type="button" class="btn btn-default">清空</button>
+            </a>
+        </form> -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>分类</th>
+                    <th>餐品名称</th>
+                    <th width="100px">图片</th>
+                    <th>购买人</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>支付金额</th>
+                    <th>支付时间</th>
+                    <th>状态</th>
+                    <th width="100px">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="list" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.type}</td>
+                    <td>{$vo.name}</td>
+                    <td><img src="__HEAD__/{$vo.img}" width="100px"> </td>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.price}元</td>
+                    <td>{$vo.num}</td>
+                    <td>{$vo.zj}元</td>
+                    <td>{php}echo date('Y-m-d H:i:s',$vo['time']){/php}</td>
+                    <td class="text-success">已支付</td>
+                    <td><a href="{:url('index/ddDel',['id'=>$vo.id])}" class="btn btn-xs btn-danger">交易完成/取消</a></td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+        {$page}
+    </div>
+</body>
+
+</html>

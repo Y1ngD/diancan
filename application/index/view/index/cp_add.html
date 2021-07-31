@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="__BS__/css/bootstrap.min.css">  
+	<script src="__BS__/js/jquery.min.js"></script>
+	<script src="__BS__/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div style="padding: 2%" >
+		<ul class="nav nav-tabs">
+			<li><a href="{:url('index/cpList')}">餐品管理</a></li>
+			<li class="active"><a href="{:url('index/cpAdd')}">添加餐品</a></li>
+		</ul>
+		<p>
+			<a href="" class="btn btn-primary pull-right"> 刷新</a>
+		</p>
+		<form role="form" action="{:url('index/cpAddup')}" method="post" enctype="multipart/form-data">
+		  <div class="form-group">
+		    <label for="name">请选择分类</label>
+		    <select class="form-control" name="type_id">
+		      {volist name="data" id="vo"}
+		      	<option value="{$vo.id}">{$vo.type}</option>
+		      {/volist}
+		    </select>
+		  </div>
+		  <div class="form-group">
+		    <label for="name">餐品名称</label>
+		    <input type="text" class="form-control" placeholder="请输入商品名称" name="name">
+		  </div>
+		  <div class="form-group">
+		    <label for="name">餐品介绍</label>
+		    <input type="text" class="form-control" placeholder="请输入商品介绍" name="intro">
+		  </div>
+		  <div class="form-group">
+		    <label for="name">餐品价格</label>
+		    <input type="text" class="form-control" placeholder="请输入价格" name="price">
+		  </div>
+		  <div class="form-group">
+		    <label for="inputfile">餐品图片</label>
+			<input type="file" name="img" id="file0" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"/><br>  
+        	<img src="" id="img0" style="width: 20rem;height: 15rem;">
+		  </div>
+		  <div class="form-group">
+		    <label for="name">参数</label>
+		    <input type="text" class="form-control" placeholder="请输入参数" name="cs">
+		  </div>
+		  <div class="form-group">
+		    <label for="name">售后</label>
+		    <input type="text" class="form-control" placeholder="请输入售后" name="sh">
+		  </div>
+		  <button type="submit" class="btn btn-success">立即添加</button>
+		</form>
+	</div>	
+<!-- 图片文件处理 -->
+<script type="text/javascript">
+    $("#file0").change(function(){  
+    var objUrl = getObjectURL(this.files[0]) ;
+    console.log("objUrl = "+objUrl);  
+        if (objUrl) {  
+              $("#img0").attr("src", objUrl);  
+        }   
+    });
+
+    function getObjectURL(file) {  
+        var url = null;   
+        if(window.createObjectURL!=undefined) {  
+            url = window.createObjectURL(file) ;  
+        }else if (window.URL!=undefined) {
+            url = window.URL.createObjectURL(file) ;  
+        }else if (window.webkitURL!=undefined) { 
+            url = window.webkitURL.createObjectURL(file) ;  
+        }  
+        return url ;  
+    }  
+</script>
+</body>
+</html>
